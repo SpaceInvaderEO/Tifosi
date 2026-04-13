@@ -8,36 +8,36 @@ FLUSH PRIVILEGES;
 CREATE TABLE client (
     id_client INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
-    email VARCHAR(150),
+    email VARCHAR(150) UNIQUE,
     code_postal INT
 );
  
 CREATE TABLE ingredient (
     id_ingredient INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL
+    nom VARCHAR(50) NOT NULL UNIQUE
 );
  
 CREATE TABLE focaccia (
     id_focaccia INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL UNIQUE,
     prix DECIMAL(5,2) NOT NULL
 );
  
 CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL
+    nom VARCHAR(50) NOT NULL UNIQUE
 );
  
 CREATE TABLE boisson (
     id_boisson INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL UNIQUE,
     id_marque INT NOT NULL,
     FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
 );
  
 CREATE TABLE menu (
     id_menu INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL UNIQUE,
     prix DECIMAL(5,2) NOT NULL,
     id_focaccia INT NOT NULL,
     FOREIGN KEY (id_focaccia) REFERENCES focaccia(id_focaccia)
